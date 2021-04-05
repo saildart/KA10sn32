@@ -24,3 +24,6 @@ xerographic printer | Xerox Graphics Printer
 custom calendar clock | Phil Petit
 mobile robot | Stanford Cart
 robot arms | Vic Scheinman
+
+# disk pack set
+![foo](big_IBM_magnetic_disk_drives_3330+3333.png "banner")
