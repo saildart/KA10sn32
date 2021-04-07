@@ -1,0 +1,41 @@
+; ~/simka/ini/0
+; synopsis: Simulator WAITS-KA-TwoSeg-Solo-Processor Dressage.
+; description:
+reset
+load -d ../ka/X
+d pc 200
+set cpu history=8
+
+do ini/symbols
+do ini/patches.0
+do ini/breakpoints
+do ini/patch_device_list
+
+; PATCH out I/O device initializations that are NOT implemented correctly
+ d DSKINI popj 3,
+ d UDPINI popj 3,
+ d DTCINI popj 3,
+ d MTCINI popj 3,
+ d XGPINI popj 3,
+ d IMPINI popj 3,
+;d LPTINI popj 3,
+ d PTPINI popj 3,
+ d PTRINI popj 3,
+ d ADCINI popj 3,
+ d DACINI popj 3,
+ d ELFINI popj 3,
+ d DILINI popj 3,
+ d DDINI popj 3,
+ d TVINI popj 3,
+
+; Disable PMP disk.
+set pmp disabled
+
+; SIM cheat sheet
+; ---------------
+; set cpu history=1000
+; rm      log00x
+; set log log00x
+echo The no-disk WAITS commands are HELLO DAY TIME RESO CORE and EDDT
+echo Type go to enter WAITS
+; go

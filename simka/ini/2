@@ -1,0 +1,16 @@
+;
+;       Triple III display consoles
+; debug ON
+; goto L4
+echo ckp 1
+rm        bugblither
+set debug bugblither
+set iii debug=DETAIL;DATAIO;CONO;CONI
+echo ckp 2
+br 127034;echo STOP DP
+br 127052;echo START
+br 127160;echo DPYHLD
+br 127176;echo DPYAVL
+echo ckp 3
+:L4
+echo ckp 4

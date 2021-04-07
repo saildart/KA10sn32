@@ -1,0 +1,48 @@
+; ini/patches.0
+
+; MAKSYS initialization to keep the executive DDT symbol table in core
+; M[36]=M[116] // JOBSYM for EDDT at location 000036 and 000037
+d 36 735434165352
+; M[37]=M[44]  // JOBREL ( also at JOBCOR for SYSTEM.DMP ) final address
+d 37 227777
+
+; set CTY teletype Model 37 with full upper and lower case
+; LINBIT+0120 /
+d 136577 210020000120
+
+; omit 'consz DCB,7' at P1GO+2 to fake a merged I/O bus
+d 163710 jfcl
+
+; Leave Librascope online but mark all 120. tracks as BAD
+; ( works for SIMH / SIMS since dummy device returns status OFFLINE bit as zero. )
+; br 040457;echo SYSINI#30 JSR2+3/ is LIBRASCOPE online ?
+; d 16032/170 777777777777
+
+; mark all tracks GOOD on Librascope
+d 16032/170 0
+
+; Patch NULL job to be 0/JRST
+d NULJB1plus2 movsi 254000
+d NULJB1plus3 jrst 11,0
+echo NULJOB is simply 0/ JRST .
+;e NULJB1
+;e -m ./6
+
+; Patch omit FMCHK
+; which clears AC shadow memory.
+d IOGOplus4 skipa
+
+; Patch CLKSER
+; to disable BATMON
+; SWR-switch-reading
+; IMP time out counter at CLKSET#818 pushj p,impclk
+d 47334 jfcl
+; d 47414 jfcl ; CONI TV,SPWBUT ; read-space-war buttons
+d 47252 jfcl
+
+; do NOT move symbol table, do NOT change SYSSIZ, do not remove ONCE only code.
+set env LINKS2=163566
+d LINKS2 jrst @163647
+; program name STANFO eddt command STANFO$: set program name PRGM -2,,227714 points at STANFO
+d 156157 777776227714
+

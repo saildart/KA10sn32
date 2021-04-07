@@ -1,0 +1,7 @@
+set -N log logrolling
+set cpu history=16
+d 100 hrlzi 204500
+d 101 fix 233000
+d 102 halt
+d pc 100
+

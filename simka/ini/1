@@ -1,0 +1,104 @@
+; ~/simka/ini/1
+; description: 
+reset
+load -d ../ka/X
+d pc 200
+set cpu history=8
+set cpu history=256
+;
+do ini/enable_all_devices
+; set ptp disabled
+; set ptr disabled
+at -a lpt LPT/%DATE
+;
+; omit NXM-STOP-KEY test "CONI PTP,200" at CLKSER#738
+; (yet another Stanford kludge bit wired to the PTP interface)
+d 047156 jfcl
+;
+do ini/symbols
+do ini/patches.0
+do ini/breakpoints
+do ini/patch_device_list
+;
+; Allow initialization for DSK, MTC, LPT, DataDisc,
+;  OMIT initialization for devices that are NOT wanted yet or ever.
+;d DSKINI popj 3,       include DSKSER disk service (PMP + IBM) although DSK device is Librascope
+ d UDPINI popj 3,
+ d DTCINI popj 3,
+;d MTCINI popj 3,       include MTA
+ d XGPINI popj 3,
+ d IMPINI popj 3,
+;d LPTINI popj 3,       include LPT
+ d PTPINI popj 3,
+ d PTRINI popj 3,
+ d ADCINI popj 3,
+ d DACINI popj 3,
+ d ELFINI popj 3,
+ d DILINI popj 3,
+;d DDINI popj 3,        include Data Disc 32 raster terminals with VDS video switch
+ d TVINI popj 3,
+;
+; Verify is Librascope online ?
+; br 040457;echo SYSINI#30 JSR2+3/ is LIBRASCOPE online ?
+;
+;       System SYS: public disk file system
+;
+; =====================================================
+; Enable PMP disk file system for 8 packs x 200 MBytes
+set pmp enabled
+set pmp0 type=3330-2
+set pmp1 type=3330-2
+set pmp2 type=3330-2
+set pmp3 type=3330-2
+set pmp4 type=3330-2
+set pmp5 type=3330-2
+set pmp6 type=3330-2
+set pmp7 type=3330-2
+at pmp0 /home/bgb/ckd/SYS000.ckd
+at pmp1 /home/bgb/ckd/SYS001.ckd
+:L3
+;
+;       Magnetic Tape
+;
+set mtc0 7T
+rm tape.00
+at mtc0 tape.00
+assign mtc mta
+;
+;       Triple III display
+;
+; echo debug III ON
+  echo debug III OFF
+  goto L4
+rm        blither
+set debug blither
+;set iii debug=DETAIL;DATAIO;CONO;CONI
+echo ckp 2
+;br 127034;echo STOP DP
+;br 127052;echo START
+;br 127160;echo DPYHLD
+;br 127176;echo DPYAVL
+:L4
+
+;
+;       DDD Data Disc raster display
+;
+;       set ddd debug
+;       set debug stderr
+;br 134767;echo DDCLK
+;br 103547;echo ISYNC
+;br 134726;echo DDINT
+
+; SIM cheat sheet
+; ---------------
+; set cpu history=1000
+; rm      chatter
+; set log chatter
+;
+echo pre-login WAITS commands are HELLO DAY TIME RESO CORE and EDDT
+echo with-disk WAITS commands include HELP LOGIN "L 1.REG" PP AL E DE S
+echo
+echo Type go to enter WAITS
+echo
+; go
+; EOF

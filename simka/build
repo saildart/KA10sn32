@@ -1,0 +1,80 @@
+#!/bin/bash
+# -------------------------------------------
+# Re-build the SIMS pdp10-ka into /usr/local/bin/simka
+#
+# example for removing the cpp switch-craft
+# gcc -E -Wall -Werror -Wno-unused-label -fdirectives-only -I . -I PDP10 PDP10/cpu.c > pure_c
+#
+# Steps:
+# 1. Get rid of extra '\r' characters
+# 2. Apply cpp switch-craft so that only KA WAITS code lines exist in CPU source file.
+# 3. Truncate the pure_c file AND re-attach head.
+#
+# tr -d '\r' < /home/bgb/sims/PDP10/kx10_cpu.c > ~/simka/a_cpu.c
+# gcc -E -Wall -Werror -Wno-unused-label -fdirectives-only -I . a_cpu.c > pure_c
+#
+# awk '/#define HIST_PC\W/{bang=1}{if(bang && length>0)print $0}' pure_c > ka_cpu.c
+#
+# awk '/KA-10/{bang=1}{if(bang && length>0)print $0}' 01.c > 02.c
+#
+time gcc -std=gnu99 \
+     -U__STRICT_ANSI__ \
+     -g -ggdb -g3 -O0 \
+     -DSIM_GIT_COMMIT_ID=NOTonGIT \
+     -DSIM_GIT_COMMIT_TIME=`date --i=s` \
+     -DSIM_COMPILER="GCC Version: 7.5.0" \
+     -DSIM_BUILD_TOOL=build.bash \
+     -I .  -I/usr/include/ \
+     -D_GNU_SOURCE \
+     -DUSE_READER_THREAD \
+     -DSIM_ASYNCH_IO  \
+     -DHAVE_PCRE_H \
+     -DHAVE_SEMAPHORE \
+     -DHAVE_SYS_IOCTL \
+     -DHAVE_LINUX_CDROM \
+     -DHAVE_DLOPEN=so \
+     -DHAVE_UTIME \
+     -DHAVE_LIBPNG \
+     -DHAVE_ZLIB \
+     -DHAVE_GLOB \
+     -DHAVE_SHM_OPEN  \
+     -DUSE_INT64 \
+     -DBPF_CONST_STRING \
+     -DUSE_SHARED \
+     \
+     -DKA=1 \
+     -DITS=0 \
+     -DWAITS=1 \
+     \
+     ./cpu.c \
+     ./papertape.c \
+     ./cty.c \
+     ./lpt.c \
+     ./data_control.c \
+     ./magtape.c \
+     ./dectape.c \
+     ./tty_scanner.c \
+     ./dkb.c \
+     ./tv.c \
+     ./iii.c \
+     ./xgp.c \
+     ./librascope.c \
+     ./pmp.c \
+     ./ddd.c \
+     ./video_switch.c \
+     ./pclk.c \
+     \
+     ./scp.c \
+     ./sim_interface.c \
+     ./sim_console.c \
+     ./sim_disk.c \
+     ./sim_fio.c \
+     ./sim_serial.c \
+     ./sim_sock.c \
+     ./sim_tape.c \
+     ./sim_timer.c \
+     ./sim_tmxr.c \
+     \
+     -o /usr/local/bin/simka \
+     -lm -lrt -lpthread -lpcre -ldl -lpng -lz
+# EOF.

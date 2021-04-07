@@ -1,0 +1,45 @@
+;
+; Why BAD RETRIEVAL ?
+;
+do ini/1
+
+set cpu history=100000
+; set -p scp-process debug=event;activate;queue
+; set -p pmp debug=bgb
+; set -p pmp debug=bgb
+; set runlimit 900000
+
+
+; rm foobaz
+; set -p debug foobaz
+
+; d  075216 jfcl
+; br 075216
+
+set env AUDCHK=101162
+set env EGARB=102442
+set env UDLK=064756
+set env DLOOK=077444
+
+set env JOB=024061
+
+
+; e -m DLOOK
+; br 077444;echo DLOOK
+
+; e -m EGARB
+; br 102445;echo EGARB+3
+
+br 102364;echo ERRC1
+
+send -t delay=3m
+send "L 1.REG\r"
+
+; br 101162[8];echo AUDCHK
+; set -n log loglog
+; go
+; sleep 2
+; sh h
+; q
+
+

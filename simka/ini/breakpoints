@@ -1,0 +1,28 @@
+; clear break points
+set nobreak 0-777777
+; remove semicolon to set
+; new break points
+;br 163755;echo PDP10: P1 is a PDP10 so check for MA-OFFSET
+;br 163706;echo P1GO:  about to check DCB on PDP6 I/O bus
+;br 040604;echo IOGO1:
+
+; Skip over setting up the IOG0: parade of Breakpoints for the device initializations
+; note III is handled in DPYSER
+goto L1
+br 123450;echo PTPINI
+br 124350;echo PTRINI
+br 117005;echo IMPINI
+br 122543;echo LPTINI
+br 107543;echo XGPINI
+br 124734;echo ADCINI
+br 125432;echo DACINI
+br 150627;echo TVINI
+br 125752;echo ELFINI
+br 105230;echo DTCINI
+br 106651;echo MTCINI
+br 135017;echo DDINI
+br 102504;echo UDPINI
+:L1
+; Investigate DSKINI
+; br 075237;echo DSKINI
+; br 075456;echo ACISAT: DSKSER#530 read SAT table from track#0

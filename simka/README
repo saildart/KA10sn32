@@ -1,0 +1,69 @@
+# github.com:saildart/KA10sn32/simka/README
+# ------------------------------------------------------------- #
+#              S       I       M       K       A                #
+# ------------------------------------------------------------- #
+# I have reduced SIMS from github (by Richard Cornwell) to simulate
+# only one machine, the KA serial #32 that was at Stanford in 1974,
+# which had type=3330-2 disk packs, 200 Megabytes each,
+# at files in ~/ckd/SYS00[0-1].ckd
+#
+# which is on github.com:saildart/waits-disk
+#       as Chickadee DISKPACK[0-1].ckd
+# The TLA "SYS" is over-used and ambigous;
+# I will try to replace it with a short specific term, here "diskpack"
+# or a short memorable word "chickadee" to remind us of "ckd" from Cornwell Sky world.
+#
+# ------------------------------------------------------------------
+# `2020-10-21 bgbaumgart@mac.com' now late in plague year MMXX.
+# `2021-04-07 bgbaumgart@mac.com' survived 2020 and now vacinated.
+
+# short-cut key on work9 Ctrl.Alt.Minus
+# gnome-terminal ~/bin/F9.alt-control -minus
+
+        Control Meta minus 
+
+
+# There is no makefile, just a bash script named 'build' which takes about 5 seconds.
+
+        build
+
+
+# The PDP-10 simulator binary is named 'simka'
+# it has the RMS, Robert M Supnik, simulator control program from the SIMH world
+# to run a PDP-10KA simulator written by Richard Cornwell,
+# and reduced to emulating only the Stanford serial #32 instance of the PDP-10KA
+# with two segment user memory relocation (prior to the BBN mapper installed in 1975)
+# and without the PDP-6 co-processor.
+
+# The PDP-6 I/O devices of 1974 are simulated on the PDP-10
+
+# FIRST, Launch independent python display terminal servers
+# for the triple-III and/or the Data Disc graphics user interfaces
+# which will YAML message with the PDP-10 simulator
+# by waiting to accept connections at well-know-port number #1974 and #1976.
+
+        iii20.py
+
+        iii21.py
+
+        iii6term.py
+
+        dd1term.py
+
+
+# SECOND, launch 'simka ini/1'
+#       disk image from ~/ckd/SYS00[0-1].ckd
+
+        simka ini/1
+
+        go
+
+        ^f
+
+        quit
+        
+
+# THIRD, PDP-10 WAITS command exercise drill.
+
+# FOURTH, the files found on the Stanford disk on 1974-07-31,
+#         inventory manifest from ALLDIR written by DART utility.

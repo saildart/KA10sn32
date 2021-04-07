@@ -1,0 +1,14 @@
+set ptp enabled
+set ptr enabled
+set dct enabled
+set dtc enabled
+set mtc enabled
+set lpt enabled
+set xgp enabled
+set pmp enabled
+set dsk enabled
+set ddd enabled
+set vds enabled
+set iii enabled
+set pclk enabled
+set tv enabled

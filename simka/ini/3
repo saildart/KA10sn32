@@ -1,0 +1,26 @@
+;
+; PMP activity seems excessive
+;
+do ini/1
+
+set cpu history=1000000
+; set -p scp-process debug=event;activate;queue
+; set -p pmp debug=bgb
+set -p pmp debug=bgb
+set runlimit 900000
+
+rm loglog
+set -n log loglog
+
+rm foobaz
+set -p debug foobaz
+
+; d  075216 jfcl
+; br 075216
+go
+
+sleep 2
+sh h
+q
+
+

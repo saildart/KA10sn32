@@ -1,0 +1,11 @@
+; ini/5
+;
+; exercise the
+; VDS video switch, and
+; DDD data disc displa
+;
+do ini/1
+set -n debug foobaz
+set -p vds debug=CONO;CONI;DATAIO
+set -p ddd debug=CONO;CONI;DATAIO
+

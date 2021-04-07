@@ -1,0 +1,48 @@
+; ini/symbols
+; --------------------------------------------------------------------------------
+; glean symbol definitions as needed from J17 disassembled ~/ka/X.dasm
+; set symbols as sim env variables
+set env FBBAND=016032
+set env FBBUSY=016223
+set env IOGO=040577
+set env IOGOplus4=040603
+;
+set env NULJB1=050051
+set env NULJB1plus2=050053
+set env NULJB1plus3=050054
+;
+set env DSKINI=075237
+set env UDPINI=102504
+set env DTCINI=105230
+set env MTCINI=106651
+set env XGPINI=107543
+set env IMPINI=117005
+set env LPTINI=122543
+set env PTPINI=123450
+set env PTRINI=124350
+set env ADCINI=124734
+set env DACINI=125432
+set env ELFINI=125752
+set env DDINI=135017
+set env TVINI=150627
+set env DILINI=145571
+;
+set env TTYTAB=032347
+set env LINBIT=136457
+;
+set env DDINT=0134726
+set env ISYNC=0103547
+;
+set env SYSSIZ=000573
+set env SYSTOP=035407
+set env THEEND=165332
+
+; EDDT executive DDT in core J17SYS
+set env DDTINI=156206
+set env SYMLOC=156200
+set env SYMP=156173
+set env EVAL=157457
+
+; DPYSER
+set env DPYINT=127027
+set env DDCLK=134767

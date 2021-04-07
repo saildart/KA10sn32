@@ -1,0 +1,82 @@
+; ini/patch_device_list
+; ----------------------------------------------------------------------
+; The head of the WAITS device list is at OUTER#1328 000610/ DEVLST:
+; consists of device data blocks DDBs pronounced Did-Dumbs
+; for example TTYDDB is a titty-did-dumb
+;
+; DDB contents
+; +0 sixbit Device Name
+; +3 next ,, init
+;
+; see source files
+; OUTER         https://www.saildart.org/OUTER[J18,SYS]
+; ALLDAT        https://www.saildart.org/ALLDAT[J18,SYS]
+
+set env DEVLST=000610
+
+set env DSKDDB=011756
+set env LPTDDB=016244
+set env XGPDDB=016564
+set env SCNDDB=017574
+set env TTYLST=017574
+
+set env DSKDDB_plus3=011761
+set env LPTDDB_plus3=016247
+set env XGPDDB_plus3=016567
+set env SCNDDB_plus3=017577
+
+; DSK ddb points at LPT to skip UDP,PTR,PTP and the IMP.
+d dskddb_plus3 016244074756
+
+; XGP ddb points at TTYLST to skip AD,ADV,DAC,TV,ELF,DTA and MTA.
+; d xgpddb_plus3 017574107341
+;       * or *
+; XGP ddb points at MTCDDB to skip AD,ADV,DAC,TV,ELF,DTA
+d xgpddb_plus3 020133107341
+
+return
+
+/* Comment
+
+most of the DDBs are defined in ALLDAT
+The DSKDDB comes first,
+the SCNDDB == TTYLST comes after all the other device DDBs.
+using EDDT to inspect Device List
+
+610/   !/N      =11756,,0   
+DSKDDB/   DSK      .+3]   UDP1DD,,DSKDSP   
+UDP1DD/   UDP1     .+3]   PTRDDB,,DSKDSP   
+PTRDDB/   PTR      .+3]   PTPDDB,,PTRDSP   
+PTPDDB/   PTP      .+3]   DDBMDL,,PTPDSP   
+DDBMDL/   IMP      .+3]   LPTDDB,,IMPDSP   
+LPTDDB/   LPT      .+3]   XGPDDB,,LPTDSP   
+XGPDDB/   XGP      .+3]   ADDDB,,XGPDSP   
+ADDDB/   AD       .+3]   ADCDDB,,ADDSP   
+ADCDDB/   ADC      .+3]   DACDDB,,ADCDSP   
+DACDDB/   DAC      .+3]   TVDDB,,DACDSP   
+TVDDB/   TV       .+3]   ELFDDB,,TVDSP   ?   
+ELFDDB/   ELF      .+3]   DTCDDB,,ELFDSP   
+DTCDDB/   DTA1     .+3]   15330,,DTCDSP   
+15330/   DTA2     .+3]   15111,,DTCDSP   
+15111/   DTA3     .+3]   14672,,DTCDSP   
+14672/   DTA4     .+3]   MTCDDB,,DTCDSP   
+MTCDDB/   MTA0     .+3]   DILIDS+2,,MTCDSP   
+DILIDS+2/   MTA1     .+3]   TTYLST,,MTCDSP   
+TTYLST/   CTY      .+3]   771602,,SCNDSP   
+771602/   TTY17    .+3]   771732,,SCNDSP   
+771732/   TTY16    .+3]   772062,,SCNDSP   
+772062/   TTY15    .+3]   772212,,SCNDSP   
+772212/   TTY14    .+3]   772342,,SCNDSP   
+772342/   TTY13    .+3]   772472,,SCNDSP   
+772472/   TTY11    .+3]   772622,,SCNDSP   
+772622/   TTY10    .+3]   772752,,SCNDSP   
+772752/   TTY6     .+3]   BLKO PCLK,SCNDSP(TAC1)   
+773102/   TTY5     .+3]   CONO PCLK,@SCNDSP(UCHN)   
+773232/   TTY4     .+3]   CONSO PCLK,@SCNDSP(TAC1)   $;_;R,2#   $=773362142203   
+773362/   TTY3     .+3\   _=*,2#   =773512,,142203   
+773512/   TTY2     .+3/   _>B,2#   =773642,,142203   
+773642/   TTY1     .+3[   773772,,142203   
+773772/   TTY0     .+3[   142203   
+0/            
+
+*/
