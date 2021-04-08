@@ -1,15 +1,25 @@
-# KA10sn32
+# KA10 sn32
 
 ![Dave Poole at Stanford KA10 cty](clipart/AI_PDP_dave_poole.png "banner")
 
-Simulators for the unique PDP-10 KA serial number 32 at Stanford for July 1974.
-Two extra opcodes, XCTR and FIXX, were hacked into this machine by Dave Poole;
-and July 1974 is just after the IBM-3330 "pizza oven" multi-pack disk system
-had been upgraded to double-density with 200 Megabytes per spindle;
-but before the BBN address mapping box was installed in 1975.
-There were perhaps 275 PDP-10-KA serial numbers.
+## Synopsis
 
-The simulated hardware configuration is as follows:
+This repository contains software and documentation for _running_ 
+the unique PDP-10 KA serial number 32 that was at Stanford in July 1974.
+Stand alone diagnostics as well as a slightly modified version of the WAITS 6.17J operating system
+are included with a small sized sample SYS: file system.
+## Shortcuts for this README
+[simulators](https://github.com/saildart/KA10sn32#simulators)
+## Preview machine unique details
+
+Two extra opcodes, XCTR and FIXX, were hacked into this machine by Dave Poole.
+This repository's time portal is set to July 1974 because
+it is just after the IBM-3330 _pizza oven_ multi-pack disk system
+had been upgraded to double-density at 200 Megabytes per spindle;
+but before the BBN address mapping box was installed in 1975.
+There were perhaps as many as 275 PDP-10-KA serial numbers.
+
+## The simulated hardware configuration is as follows:
 
 generic | specific
 -------------------------- | --------------------------------
@@ -91,13 +101,13 @@ AA, AB, AC, AD, AE, AF, AG, AH, AI, AJ, AK, AL, AM then BA and finally DA in 197
 
 # Simulators
 
-## Supnick SIMH
+## Supnick SIMH https://github.com/simh/simh
 
-## Cornwell SIM
+## Cornwell SIMS https://github.com/rcornwell/sims
 
 ## Baumgart
 
-### Simka is a knock-down from Cornwell
+### Simka is a knock-down from Cornwell SIMS 2020
 ### Do-Run-Run is a messy 'C' with some Supnick code
 ### KA10_SYSTEM_J17 unfinished 'D'
 ### j5, j6 and j7 are embedded inside https://saildart.org as 'Java Script' code with too many windows.
