@@ -75,6 +75,6 @@ time gcc -std=gnu99 \
      ./sim_timer.c \
      ./sim_tmxr.c \
      \
-     -o /usr/local/bin/simka \
+     -o bin/simka \
      -lm -lrt -lpthread -lpcre -ldl -lpng -lz
 # EOF.

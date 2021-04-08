@@ -1,0 +1,20 @@
+#!/bin/bash
+# ---------------------------------------------
+# Demonstrate one each Triple-III and Data Disc
+#       graphics user terminal station
+#       running SYSTEM.DMP[J17,SYS]
+#       on the simulator named simka
+# ---------------------------------------------
+
+# clean off previous exhibit
+pkill -9 simka
+pkill iii21.py
+pkill dd1term.py
+
+# launch demonstation as three subordinate windows
+dd1term.py &
+iii21.py &
+sleep 1
+gnome-terminal --geometry  115x44+2880+0 -- bin/simka 200go &
+
+# EOF
