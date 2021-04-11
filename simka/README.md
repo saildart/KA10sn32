@@ -1,5 +1,16 @@
 # SIMKA
 
+# Build and Run a demonstration
+
+        makefile target | description
+        --------------- | -----------
+        make all        | bash script "build"
+        make go         | bash script "demo"
+        make stop       | kills simulator and display jobs
+        make clean      | rm *~
+        
+# Synopsis
+
 I have reduced SIMS from github (by Richard Cornwell) to simulate
 only one machine, the KA serial #32 that was at Stanford in 1974,
 which had type=3330-2 disk packs, 200 Megabytes each,

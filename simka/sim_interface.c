@@ -153,10 +153,20 @@ t_stat load_dmp (FILE *fileref)
   }
   return SCPE_OK;
 }
-// KA10 SAIL-WAITS load octal DMP file
+t_stat save_dmp (FILE *fileref)
+{
+  uint32  addr = 074;           // The SAIL-WAITS dmp file format offset is 60. words
+  uint64  data;
+  while( addr < 0230000 ){      // The top of SYSTEM.DMP[J17,SYS] is forever 76K words
+      data = M[addr++];
+      fprintf( fileref, "%012llo\n", data );
+  }
+  return SCPE_OK;
+}
+// KA10 SAIL-WAITS save or load octal DMP file
 t_stat sim_load (FILE *fileref, CONST char *cptr, CONST char *fnam, int flag)
 {
-  return load_dmp (fileref);
+  return flag ? save_dmp (fileref) : load_dmp (fileref);
 }
 
 // symbol table
