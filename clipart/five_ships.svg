@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="1.1" class="pad"  width="1620px" height="540px">
+  <g font-size="20" text-anchor="middle" >
+    <g transform="translate(100,100)scale(4.0,4.0)">   <path id="ship1"  stroke="green" stroke-width="1" fill="none" d="M-5,12 l-2,-4v-16l-4,-4 v6 l4,4 h4 l4,-4 v-6 l-4,4 h-4 h4 v16 Z" /></g>
+    <g transform="translate(200,100)scale(4.0,4.0)">   <path id="ship2"  stroke="green" stroke-width="1" fill="none" d="M-5,11 l-2,-4v-18l-4,1v6l4,1h4l4,-1v-6l-4,-1h-4        h4 v18 Z"/></g>
+    <g transform="translate(300,100)scale(4.0,4.0)">   <path id="ship3"  stroke="green" stroke-width="1" fill="none" d="M-5,11 l-2,-4v-18h-4v6l4,4h4l4,-4v-6h-8                h4 v18 Z"/></g>
+    <g transform="translate(400,100)scale(4.0,4.0)">   <path id="ship4"  stroke="green" stroke-width="1" fill="none" d="M-5,11 l-2,-4v-18h-4l4,8h4l4,-8h-8                     h4 v18 Z"/></g>
+    <g transform="translate(500,100)scale(4.0,4.0)">   <path id="ship5"  stroke="green" stroke-width="1" fill="none" d="M-3,12 l-2,-4v-18l-2,-2,-4,4,6,6h4l6,-6,-4,-4,-2,2h-4,4   v18 Z"/></g>
+    
+    <g transform="translate(150,150)scale(0.675000)">
+        <g transform="scale(2.0,-2.0)"><path id="ship2"  stroke="green" stroke-width="1" fill="none" d="M-5,11l-2,-4v-18l-4,1v6l4,1h4l4,-1v-6l-4,-1h-4h4v18Z"/></g>        
+    </g>
+    <g transform="translate(200,200)scale(0.675000)">
+        <g transform="scale(2.0,-2.0)"><path id="ship3"  stroke="green" stroke-width="1" fill="none" d="M-5.5,10.4 l-2-4v-18h-4v6l4,4h4l4,-4v-6h-8h4v18Z"/></g>        
+    </g>
+    <g transform="translate(250,250)scale(0.675000)">
+        <g transform="scale(2.0,-2.0)"><path id="ship4"  stroke="green" stroke-width="1" fill="none" d="M-5,11l-2,-4v-18h-4l4,8h4l4,-8h-8h4v18Z"/></g>
+    </g>
+    <g transform="translate(300,300)scale(0.675000)">
+        <g transform="scale(2.0,-2.0)"><path id="ship5"  stroke="green" stroke-width="1" fill="none" d="M-3,12l-2,-4v-18l-2,-2,-4,4,6,6h4l6,-6,-4,-4,-2,2h-4,4v18Z"/></g>
+    </g>
+  </g>
+</svg>
