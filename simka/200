@@ -1,7 +1,5 @@
-; This file is 200go
+; This file is 200
 ; ------------------------------------------------------
-; echo Doing ~/simka.ini %DATETIME
-! pwd
 reset
 load data/112333.octal
 d pc 200
@@ -148,7 +146,3 @@ set pmp4 type=3330-2
 set pmp5 type=3330-2
 set pmp6 type=3330-2
 set pmp7 type=3330-2
-
-dump data/200
-at pmp0 /home/bgb/ckd/SYS000.ckd
-at pmp1 /home/bgb/ckd/SYS001.ckd

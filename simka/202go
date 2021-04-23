@@ -1,0 +1,7 @@
+; This file is 202go
+; ---------------------
+do 200
+dump data/202.octal
+at pmp0 /KIT/0.ckd
+at pmp1 /KIT/1.ckd
+go
